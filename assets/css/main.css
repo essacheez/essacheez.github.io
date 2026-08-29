@@ -13,7 +13,7 @@
   --border: #e2d9c9;
   --hover: #f1e9db;
 
-  --measure: 810px;
+  --measure: 800px;
   --font-sans:
     ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, sans-serif;
@@ -33,9 +33,11 @@
 html {
   -webkit-text-size-adjust: 100%;
   /* Single base size for every screen — no wide-screen step-ups, so what you
-     see locally is exactly what ships. Change this one value to rescale the
-     whole site; --measure below controls the column width. */
-  font-size: 16px;
+     see locally is exactly what ships. 12.8px is 80% of the browser's 16px
+     default, which bakes in the 80%-zoom look at 100% zoom. Every other size
+     is in rem, so this one value rescales the whole design; --measure below
+     controls the column width independently. */
+  font-size: 12.8px;
 }
 
 body {
@@ -161,8 +163,8 @@ a:hover {
 }
 
 .profile-image {
-  width: 215px;
-  height: 215px;
+  width: 13.44rem;
+  height: 13.44rem;
   border-radius: 50%;
   object-fit: cover;
   flex-shrink: 0;
@@ -273,7 +275,7 @@ a:hover {
 .news-date {
   color: var(--text-secondary);
   font-size: 0.92rem;
-  min-width: 140px;
+  min-width: 8.75rem;
   flex-shrink: 0;
   padding-top: 0.15rem;
   font-variant-numeric: tabular-nums;
@@ -649,8 +651,8 @@ a:hover {
   }
 
   .profile-image {
-    width: 170px;
-    height: 170px;
+    width: 10.63rem;
+    height: 10.63rem;
   }
 
   .name {
