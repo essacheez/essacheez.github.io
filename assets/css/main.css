@@ -33,11 +33,11 @@
 html {
   -webkit-text-size-adjust: 100%;
   /* Single base size for every screen — no wide-screen step-ups, so what you
-     see locally is exactly what ships. 12.8px is 80% of the browser's 16px
-     default, which bakes in the 80%-zoom look at 100% zoom. Every other size
+     see locally is exactly what ships. 14.4px is 90% of the browser's 16px
+     default, which bakes in the 90%-zoom look at 100% zoom. Every other size
      is in rem, so this one value rescales the whole design; --measure below
      controls the column width independently. */
-  font-size: 12.8px;
+  font-size: 14.4px;
 }
 
 body {
