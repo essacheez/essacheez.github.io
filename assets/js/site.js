@@ -273,8 +273,6 @@
         var meta = parsed.meta;
         var title = meta.title || slug;
 
-        document.title = title + " — Essa Jan";
-
         headerMount.innerHTML = "";
         headerMount.appendChild(el("h1", null, title));
         var date = formatDate(meta.date || dateFromSlug(slug));
