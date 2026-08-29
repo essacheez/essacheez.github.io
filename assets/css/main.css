@@ -1,0 +1,703 @@
+/* ==========================================================================
+   Essa Jan — site styles
+   Single stylesheet shared by every page.
+   ========================================================================== */
+
+:root {
+  --bg: #f7f1e6;
+  --surface: #fbf7f0;
+  --text: #2a2622;
+  --text-secondary: #6f665c;
+  --accent: #3f5d45;
+  --accent-hover: #2f4634;
+  --border: #e2d9c9;
+  --hover: #f1e9db;
+
+  --measure: 874px;
+  --font-sans:
+    ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --font-serif:
+    "Iowan Old Style", "Palatino Linotype", Palatino, Georgia,
+    "Times New Roman", serif;
+  --font-mono:
+    ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  font-size: 17px;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* Justified body copy across every page. Hyphenation is what keeps the
+   ragged gaps ("rivers") out of a justified column, especially on mobile. */
+.bio,
+.bio-research,
+.news-content,
+.item-description,
+.post-list-excerpt,
+.prose p,
+.prose li,
+.prose blockquote {
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+/* Reference entries and code stay ragged-right — justifying a citation or a
+   code line stretches it into nonsense. */
+.prose .references-item,
+.prose pre,
+.prose pre code {
+  text-align: left;
+  hyphens: none;
+  -webkit-hyphens: none;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.container {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 3rem 1.25rem 4rem;
+}
+
+/* --------------------------------------------------------------------------
+   Site navigation (every page)
+   -------------------------------------------------------------------------- */
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding-bottom: 1.25rem;
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9rem;
+}
+
+.site-nav .brand {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin-right: auto;
+}
+
+.site-nav .brand:hover {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.site-nav a {
+  color: var(--text-secondary);
+  padding-bottom: 2px;
+  border-bottom: 1px solid transparent;
+  transition:
+    color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.site-nav a:hover {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom-color: var(--accent);
+}
+
+.site-nav a[aria-current="page"] {
+  color: var(--text);
+  border-bottom-color: var(--accent);
+}
+
+/* --------------------------------------------------------------------------
+   Home — header
+   -------------------------------------------------------------------------- */
+
+.header-wrapper {
+  margin-bottom: 3rem;
+}
+
+.header-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 2.25rem;
+  margin-bottom: 1rem;
+}
+
+.profile-image {
+  width: 215px;
+  height: 215px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 1px solid var(--border);
+  box-shadow: 0 1px 2px rgba(42, 38, 34, 0.06);
+}
+
+.header-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.name {
+  font-family: var(--font-serif);
+  font-size: 2.4rem;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+  margin-bottom: 0.35rem;
+}
+
+.title {
+  font-size: 1.08rem;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+.bio,
+.bio-research {
+  font-size: 1.08rem;
+  line-height: 1.75;
+  margin-bottom: 1rem;
+}
+
+.bio {
+  margin-bottom: 0;
+}
+
+.bio-research {
+  margin-bottom: 1.5rem;
+}
+
+.bio-research:last-child {
+  margin-bottom: 0;
+}
+
+.social-links {
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 0.95rem;
+}
+
+.social-links a {
+  color: var(--text-secondary);
+  padding-bottom: 2px;
+  border-bottom: 1px solid var(--border);
+  transition:
+    color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.social-links a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+  text-decoration: none;
+}
+
+/* --------------------------------------------------------------------------
+   Sections
+   -------------------------------------------------------------------------- */
+
+.section {
+  margin-bottom: 3rem;
+}
+
+.section:last-child {
+  margin-bottom: 0;
+}
+
+.section-title {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--border);
+}
+
+/* News */
+
+.news-item {
+  display: flex;
+  gap: 1.5rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.news-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.news-date {
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  min-width: 140px;
+  flex-shrink: 0;
+  padding-top: 0.15rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.news-content {
+  flex: 1;
+  font-size: 1.08rem;
+}
+
+/* Research list */
+
+.item-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.item:first-child {
+  padding-top: 0;
+}
+
+.item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.item-title {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.35;
+  margin-bottom: 0.35rem;
+}
+
+.item-title a {
+  color: var(--text);
+}
+
+.item-title a:hover {
+  color: var(--accent);
+}
+
+.contributors {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.2rem;
+}
+
+.contributors strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.item-meta {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
+
+.item-description {
+  font-size: 1.08rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+/* Abstracts stay collapsed until the item is hovered (or focused via the
+   keyboard). Wrapped in (hover: hover) so touch devices — which have no hover
+   state to reveal it with — always show the text. */
+@media (hover: hover) {
+  .item-description {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition:
+      max-height 0.3s ease,
+      opacity 0.2s ease;
+  }
+
+  .item:hover .item-description,
+  .item:focus-within .item-description {
+    max-height: 30rem;
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .item-description {
+    transition: none;
+  }
+}
+
+/* Plain bulleted list at body size — no rules between items, no bold. */
+.plain-list {
+  padding-left: 1.35rem;
+  font-size: 1.08rem;
+  line-height: 1.75;
+}
+
+.plain-list li + li {
+  margin-top: 0.35rem;
+}
+
+/* --------------------------------------------------------------------------
+   Page header (blog, reads, post)
+   -------------------------------------------------------------------------- */
+
+.page-header {
+  margin-bottom: 2.5rem;
+}
+
+.page-header h1 {
+  font-family: var(--font-serif);
+  font-size: 2.35rem;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+  margin-bottom: 0.4rem;
+}
+
+.page-header .tagline {
+  color: var(--text-secondary);
+  font-size: 1rem;
+}
+
+/* --------------------------------------------------------------------------
+   Post / read listings
+   -------------------------------------------------------------------------- */
+
+.post-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.post-list-item {
+  padding: 1.4rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.post-list-item:first-child {
+  padding-top: 0;
+}
+
+.post-list-item:last-child {
+  border-bottom: none;
+}
+
+.post-list-title {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 0.3rem;
+}
+
+.post-list-title a {
+  color: var(--text);
+}
+
+.post-list-title a:hover {
+  color: var(--accent);
+}
+
+.post-list-meta {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 0.55rem;
+}
+
+.post-list-excerpt {
+  font-size: 0.97rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 0.6rem;
+}
+
+.read-more {
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+
+.empty-state,
+.error-state {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  padding: 0.5rem 0;
+}
+
+.error-state code {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  background: var(--hover);
+  padding: 0.1em 0.4em;
+  border-radius: 3px;
+}
+
+/* --------------------------------------------------------------------------
+   Single post — long-form prose
+   -------------------------------------------------------------------------- */
+
+.post-header {
+  margin-bottom: 2.25rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.post-header h1 {
+  font-family: var(--font-serif);
+  font-size: 2.6rem;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-bottom: 0.6rem;
+}
+
+.post-header .post-meta {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.prose {
+  font-family: var(--font-serif);
+  font-size: 1.08rem;
+  line-height: 1.8;
+}
+
+.prose > * + * {
+  margin-top: 1.25rem;
+}
+
+.prose h2 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-top: 2.5rem;
+  letter-spacing: -0.01em;
+}
+
+.prose h3 {
+  font-size: 1.38rem;
+  font-weight: 600;
+  margin-top: 2rem;
+}
+
+.prose ul,
+.prose ol {
+  padding-left: 1.4rem;
+}
+
+.prose li + li {
+  margin-top: 0.4rem;
+}
+
+.prose blockquote {
+  border-left: 2px solid var(--accent);
+  padding-left: 1.1rem;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.prose img {
+  display: block;
+  border-radius: 3px;
+  border: 1px solid var(--border);
+}
+
+/* Reference entries read as one block, so they sit tighter than body
+   paragraphs. Tagged in site.js by the heading they follow. */
+.prose .references-item {
+  margin-top: 0.35rem;
+}
+
+.prose hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2.5rem 0;
+}
+
+.prose code {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  background: var(--hover);
+  padding: 0.15em 0.4em;
+  border-radius: 3px;
+}
+
+.prose pre {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1rem 1.1rem;
+  overflow-x: auto;
+  line-height: 1.55;
+}
+
+.prose pre code {
+  background: none;
+  padding: 0;
+  font-size: 0.85rem;
+}
+
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+}
+
+.prose th,
+.prose td {
+  border-bottom: 1px solid var(--border);
+  padding: 0.55rem 0.75rem;
+  text-align: left;
+}
+
+.prose th {
+  font-weight: 600;
+  border-bottom-color: var(--text-secondary);
+}
+
+.table-scroll {
+  overflow-x: auto;
+}
+
+.post-footer {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.9rem;
+}
+
+/* --------------------------------------------------------------------------
+   Mobile
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 720px) {
+  .container {
+    padding: 2rem 1.1rem 3rem;
+  }
+
+  .site-nav {
+    gap: 0.9rem;
+    flex-wrap: wrap;
+    font-size: 0.85rem;
+  }
+
+  /* Brand keeps its row with the links; wrapping is the fallback, not the
+     default, so the three page links only drop when they genuinely can't fit. */
+  .site-nav .brand {
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+
+  .site-nav a {
+    white-space: nowrap;
+  }
+
+  .header-top {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
+  }
+
+  .profile-image {
+    width: 170px;
+    height: 170px;
+  }
+
+  .name {
+    font-size: 2rem;
+  }
+
+  .social-links {
+    justify-content: center;
+  }
+
+  .news-item {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .news-date {
+    min-width: auto;
+  }
+
+  .page-header h1,
+  .post-header h1 {
+    font-size: 1.95rem;
+  }
+}
+
+/* Roomier on large displays: a wider column and a slightly larger base size,
+   which every rem-based value below scales from. */
+@media (min-width: 1200px) {
+  :root {
+    --measure: 1035px;
+  }
+
+  html {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 1600px) {
+  :root {
+    --measure: 1104px;
+  }
+}
+
+@media print {
+  .site-nav,
+  .post-footer {
+    display: none;
+  }
+
+  body {
+    background: #fff;
+  }
+}
